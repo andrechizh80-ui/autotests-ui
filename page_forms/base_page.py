@@ -1,0 +1,16 @@
+from playwright.sync_api import Page
+
+
+
+class BasePage:
+    """
+    Базовый класс для работы со страницами
+    """
+    def __init__(self, page:Page):
+        self.page = page
+
+    def visit(self, url: str):
+        self.page.goto(url)
+
+    def reload(self):
+        self.page.reload()

@@ -1,6 +1,9 @@
 from pytest import fixture
-from playwright.sync_api import sync_playwright, Playwright, Page
+from playwright.sync_api import sync_playwright
 
+pytest_plugins = (
+    "fixtures.pages"
+)
 
 @fixture(scope="session")
 def initialize_browser_state()-> None:
