@@ -27,3 +27,10 @@ def chromium_page_with_state(initialize_browser_state) :
         yield  page
         new_context.close()
         browser.close()
+
+@fixture
+def chromium_page():
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.launch(headless=False)
+        yield browser.new_page()
+        browser.close()
