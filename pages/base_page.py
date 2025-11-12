@@ -1,12 +1,12 @@
 from playwright.sync_api import Page
 
 
-
 class BasePage:
     """
     Базовый класс для работы со страницами
     """
-    def __init__(self, page:Page):
+
+    def __init__(self, page: Page):
         self.page = page
 
     def visit(self, url: str):

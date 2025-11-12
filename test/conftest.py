@@ -5,8 +5,9 @@ pytest_plugins = (
     "fixtures.pages"
 )
 
+
 @fixture(scope="session")
-def initialize_browser_state()-> None:
+def initialize_browser_state() -> None:
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=False)
         context = browser.new_context()
@@ -21,15 +22,16 @@ def initialize_browser_state()-> None:
 
 
 @fixture(scope="function")
-def chromium_page_with_state(initialize_browser_state) :
+def chromium_page_with_state(initialize_browser_state):
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=False)
         new_context = browser.new_context(storage_state='browser-state.json')
         page = new_context.new_page()
 
-        yield  page
+        yield page
         new_context.close()
         browser.close()
+
 
 @fixture
 def chromium_page():
