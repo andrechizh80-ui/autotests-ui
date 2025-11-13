@@ -27,7 +27,7 @@ def test_create_course(create_course_page: CreateCoursePage, courses_list_page: 
         create_course_page.upload_preview_image(file='./testdata/files/image.png')
         create_course_page.image_upload_widget.check_visible(is_image_uploaded=True)
 
-        create_course_page.create_course_form.fill(
+        create_course_page.create_course_form.fill_form(
             title="Blini",
             estimated_time="10 min",
             description="Blini so sgushenkoy",
