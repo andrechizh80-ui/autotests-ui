@@ -20,4 +20,3 @@ __pycache__/
 .env
 .allure-results/
 allure-report/
-browser-state.json
