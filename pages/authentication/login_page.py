@@ -1,6 +1,10 @@
+import re
+
 from playwright.sync_api import Page, expect
 
 from components.authentication.login_form_component import LoginFormComponent
+from elements.button import Button
+from elements.link import Link
 from pages.base_page import BasePage
 
 
@@ -10,8 +14,8 @@ class LoginPage(BasePage):
 
         self.login_form = LoginFormComponent(page)
 
-        self.login_button = page.get_by_test_id('login-page-login-button')
-        self.registration_link = page.get_by_test_id('login-page-registration-link')
+        self.login_button = Button(page, 'login-page-login-button', 'Login')
+        self.registration_link = Link(page, 'login-page-registration-link', 'Link')
         self.wrong_email_or_password_alert = page.get_by_test_id('login-page-wrong-email-or-password-alert')
 
     def click_login_button(self):
@@ -19,6 +23,7 @@ class LoginPage(BasePage):
 
     def click_registration_link(self):
         self.registration_link.click()
+        self.check_current_url(re.compile(".*/#/auth/registration"))
 
     def check_visible_wrong_email_or_password_alert(self):
         expect(self.wrong_email_or_password_alert).to_be_visible()
