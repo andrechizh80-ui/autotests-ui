@@ -18,3 +18,5 @@ __pycache__/
 *.pyc
 *.pyo
 .env
+ allure-results/
+ browser-state.json
