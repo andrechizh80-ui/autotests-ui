@@ -18,7 +18,7 @@ __pycache__/
 *.pyc
 *.pyo
 .env
-.allure-results/
+allure-results/
 allure-report/
 browser-state.json
 tracing/
